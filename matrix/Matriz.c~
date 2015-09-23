@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define ROW 20
+#define COL 20
+#define INNER 20
+
+
+typedef struct Matrix
+{
+    int row , col;
+    int** vecPtr;
+} Matrix;
+
+
+
+void print (Matrix *mat);
+
+Matrix *mult (Matrix *A , Matrix *B);
+
+
+int main(void) 
+{
+	Matrix *A , *B , *C;
+	int row , col , inner;
+
+	A = (Matrix*)malloc(sizeof(Matrix));
+	B = (Matrix*)malloc(sizeof(Matrix));
+	C = (Matrix*)malloc(sizeof(Matrix));
+
+	A -> vecPtr = (int**)malloc(ROW*sizeof(int*));
+	B -> vecPtr = (int**)malloc(ROW*sizeof(int*));
+	C -> vecPtr = (int**)malloc(ROW*sizeof(int*));
+
+	for (row = 0 ; row < ROW ; row++)
+	{
+		A -> vecPtr[row] = (int*)malloc(COL*sizeof(int));
+		B -> vecPtr[row] = (int*)malloc(COL*sizeof(int));
+		C -> vecPtr[row] = (int*)malloc(COL*sizeof(int));
+	}
+
+	
+	for (row = 0 ; row < ROW ; row++)
+	{
+		for (col = 0 ; col < COL ; col++)
+		{
+			A -> vecPtr[row][col] = row+1;
+			B -> vecPtr[row][col] = col+1;
+		}
+	}
+
+
+	printf ("1\n");
+	C = mult (A , B);
+	printf ("2\n");
+
+	//print (A);
+	//print (B);
+	//print (C);
+
+	return 0;
+}
+
+
+Matrix *mult (Matrix *A , Matrix *B)
+{
+	Matrix *C;
+	int row , col , inner , sum;
+	
+	C = (Matrix*)malloc(sizeof(Matrix));
+
+	C -> vecPtr = (int**)malloc(ROW*sizeof(int*));
+
+	for (row = 0 ; row < ROW ; row++)
+	{
+		C -> vecPtr[row] = (int*)malloc(COL*sizeof(int));
+	}
+
+
+	for (row = 0 ; row != ROW ; row++) 
+	{
+ 		for (col = 0 ; col != COL ; col++)
+		{
+			sum = 0;
+			for (inner = 0 ; inner != INNER ; inner++)
+			{
+				sum += A -> vecPtr[row][inner] * B -> vecPtr[inner][col];
+			}
+			C -> vecPtr[row][col] = sum;
+		}
+	}
+
+	return C;
+}
+
+
+
+
+void print (Matrix *mat)
+{
+	int row , col;
+
+	for (row = 0 ; row < ROW ; row++)
+	{
+		for (col = 0 ; col < COL ; col++)
+		{
+			printf ("%d ", mat -> vecPtr[row][col]);
+		}
+		printf ("\n");
+	}
+	printf ("\n");
+}
+
