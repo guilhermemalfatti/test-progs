@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 		fprintf(stderr, help_msg, argv[0]);
 		return -1;
 	}
-	int input_size = 50;//atoi(argv[1]);
+	int input_size = 25;//atoi(argv[1]);
 	
 	myGraph = newGraph();
 	
