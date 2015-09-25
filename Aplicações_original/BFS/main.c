@@ -18,21 +18,18 @@ void process(struct process_fn_struct params)
 
 int main(int argc, char **argv)
 {
-    struct process_fn_struct params;
-    register int i;
-    register int input_size = 25;//atoi(argv[1]);
-
-
+	int i;
+	struct process_fn_struct params;
+	
 	if (argc != 1) {
 		fprintf(stderr, help_msg, argv[0]);
 		return -1;
 	}
-
-
+	int input_size = 25;//atoi(argv[1]);
+	
 	myGraph = newGraph();
-
-
-    myGraph->root = newGraphNode(myGraph, 1);
+	
+	myGraph->root = newGraphNode(myGraph, 1);
 	for(i = 2; i < input_size; i++) {
 		params.node1 = newGraphNode(myGraph, i);
 		BFSGraph(myGraph, process, params);

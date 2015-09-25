@@ -33,12 +33,12 @@ void insertLastElementInList(ListNode **list, ListNode *node) {
 		node->next = auxPointer;
 		return;
 	}
-
+	
 	while (pointer != NULL) {
 		auxPointer = pointer;
 		pointer = pointer->next;
 	}
-
+	
 	auxPointer->next = node;
 	return;
 }
@@ -64,7 +64,7 @@ void insertNodeInSortedList(ListNode **list, ListNode *node) {
 	if (pointer == NULL) {
 		auxPointer->next = node;
 	} else {
-		auxPointer->next = node;
+		auxPointer->next = node; 
 		node->next = pointer;
 	}
 }
@@ -83,3 +83,11 @@ ListNode* searchList(ListNode *list, LIST_DATA_ELEMENT_TYPE search_key){
 	}
 	return pointer;
 }
+
+// void printList(ListNode *list) {
+// 	while(list != NULL){
+// 		LIST_DATA_ELEMENT_PRINT(list);
+// 		list = list->next;
+// 	}
+// 	printf("\n\n");
+// }

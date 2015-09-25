@@ -9,21 +9,21 @@ int main(void)
 	     info[500], nome[500];
 	long valor;
 	FILE *arq;
-	
+printf("bgin\n");
 	arq = fopen(url, "r");
 	if(arq == NULL)
 			printf("Erro, nao foi possivel abrir o arquivo\n");
-	else		
+	else
 	while( (fscanf(arq,"%s %lu\n", nome, &valor))!=EOF ){
 		if(strstr(nome, key)){
-			printf("[BFS]nome: %s valor orinal: 81905640 valor: %lu calculo: %lu\n", nome, valor, (valor * 100)/81905640);
+			printf("[LL]nome: %s valor orinal: 27262635 valor: %lu calculo: %lu\n", nome, valor, (valor * 100)/27262635);
 		}
 		if(strstr(nome, key02)){
-			printf("[BFS]nome: %s valor orinal: 78784065 valor: %lu calculo: %lu\n", nome, valor, (valor * 100)/78784065);
+			printf("[LL]nome: %s valor orinal: 26710905 valor: %lu calculo: %lu\n", nome, valor, (valor * 100)/26710905);
 		}
 	}
-	
+
 	fclose(arq);
-	
+
 	return 0;
 }

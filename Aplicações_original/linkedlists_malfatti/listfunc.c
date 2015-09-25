@@ -1,5 +1,5 @@
 /*!
-* @file main.c
+* @file listfunc.c
 * @author Fernando S. Pacheco
 * @date 2015-03-16
 * @brief Lista encadeada - Baseado no material de Celes e Rangel Cap. 10
@@ -18,7 +18,6 @@
 #include "listfunc.h"
 #include <stdio.h>
 #include <stdlib.h>
-
 
 Lista* inicializa(void) {
    return NULL;
@@ -41,12 +40,12 @@ void insere(int dado, Lista** lst) {
    }
    novo->dado = dado;
    novo->prox = *lst;
-   *lst=novo;
+   *lst=novo;   
 }
 
 void imprime(Lista* lst) {
    Lista *p;
-    int k=0;
+   int k=0;
    printf("n\tend\t\tdado\tprox\n");
    for (p=lst; p!=NULL; p=p->prox) {
       printf("%d\t%p\t%d\t%p\n", k, p, p->dado, p->prox);
@@ -133,30 +132,3 @@ void insere_ordenado (int dado, Lista** lst) {
   }
 }
 
-
-int main(void)
-{
-   Lista *lst = inicializa();
-   Lista *b = NULL;
-   printf("##%p##\n",&lst);
-   imprime(lst);
-   insere_ordenado(100, &lst);
-   insere_ordenado(97, &lst);
-   insere_ordenado(42, &lst);
-   insere_ordenado(250, &lst);
-   imprime(lst);
-   b=busca(lst, 99);
-   if (b!=NULL) printf("Encontrado: %d\n", b->dado);
-   if (apaga(&lst, 99)) {
-     printf("Elemento removido\n");
-   }
-   else {
-     printf("Elemento não encontrado\n");
-   }
-   imprime(lst);
-   libera(lst);
-   lst=NULL;
-   imprime(lst);
-
-   return EXIT_SUCCESS;
-}
