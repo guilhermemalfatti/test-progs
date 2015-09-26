@@ -16,10 +16,10 @@ printf("bgin\n");
 	else
 	while( (fscanf(arq,"%s %lu\n", nome, &valor))!=EOF ){
 		if(strstr(nome, key)){
-			printf("[IMDC]nome: %s valor orinal: 14626800 valor: %lu calculo: %lu\n", nome, valor, (valor * 100)/14626800);
+			printf("[IMDC]nome: %s valor orinal: 344890965 valor: %lu calculo: %lu\n", nome, valor, (valor * 100)/344890965);
 		}
 		if(strstr(nome, key02)){
-			printf("[IMDC]nome: %s valor orinal: 13875090 valor: %lu calculo: %lu\n", nome, valor, (valor * 100)/13875090);
+			printf("[IMDC]nome: %s valor orinal: 324992550 valor: %lu calculo: %lu\n", nome, valor, (valor * 100)/324992550);
 		}
 	}
 
