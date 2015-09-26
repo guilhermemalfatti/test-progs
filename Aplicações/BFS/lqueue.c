@@ -9,7 +9,7 @@ Queue* newQueue()
 	ret->size = 0;
 	ret->head = NULL;
 	ret->tail = NULL;
-	
+
 	return ret;
 }
 
@@ -21,7 +21,7 @@ QueueNode* newQueueNode(QUEUE_DATA_ELEMENT_TYPE value) {
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	QUEUE_DATA_ELEMENT_SET(new_node, value)
-	
+
 	return new_node;
 }
 
@@ -35,15 +35,15 @@ void enQueue(Queue *queue, QueueNode *node) {
 		queue->tail->prev = node;
 		queue->tail = node;
 	}
-	
+
 	queue->size++;
 	return;
 }
-
+//QueueNode *ret;
 QueueNode* deQueue(Queue *queue)
 {
-	QueueNode *ret;
-	
+	register QueueNode *ret;
+
 	if (queue->head == NULL) {
 		return NULL;
 	} else {
@@ -52,7 +52,7 @@ QueueNode* deQueue(Queue *queue)
 		ret->prev = NULL;
 		if (queue->head != NULL)
 			queue->head->next = NULL;
-		
+
 		queue->size--;
 		return ret;
 	}
@@ -73,7 +73,7 @@ QUEUE_DATA_ELEMENT_TYPE getQueueNodeElement(QueueNode *qn)
 
 // void printQueue(Queue* queue) {
 // 	QueueNode *aux = queue->tail;
-// 	
+//
 // 	while(aux != NULL){
 // 		QUEUE_DATA_ELEMENT_PRINT(aux);
 // 		aux = aux->next;

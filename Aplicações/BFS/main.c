@@ -15,28 +15,27 @@ void process(struct process_fn_struct params)
 		addNeighbourNode(params.node2, params.node1);
 	}
 }
-
+//int i;
+//int input_size;
 int main(int argc, char **argv)
 {
-    struct process_fn_struct params;
-    register int i;
-    register int input_size = 25;//atoi(argv[1]);
 
+	struct process_fn_struct params;
 
-	if (argc != 1) {
+	if (argc != 2) {
 		fprintf(stderr, help_msg, argv[0]);
 		return -1;
 	}
-
-
+	register int input_size = atoi(argv[1]);
+    register int i;
+    input_size = atoi(argv[1]);
 	myGraph = newGraph();
 
-
-    myGraph->root = newGraphNode(myGraph, 1);
+	myGraph->root = newGraphNode(myGraph, 1);
 	for(i = 2; i < input_size; i++) {
 		params.node1 = newGraphNode(myGraph, i);
 		BFSGraph(myGraph, process, params);
 	}
-
-	printGraph(myGraph);
+    printf("finish:\n");
+	//printGraph(myGraph);
 }

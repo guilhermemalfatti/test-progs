@@ -12,10 +12,10 @@ ListNode *newListNode(LIST_DATA_ELEMENT_TYPE value) {
 	LIST_DATA_ELEMENT_SET(new_node, value);
 	return new_node;
 }
-
+//ListNode *auxPointer;
 void insertFirstElementInList(ListNode **list, ListNode *node) {
-	ListNode *pointer = *list;
-	ListNode *auxPointer;
+	register ListNode *pointer = *list;
+    register ListNode *auxPointer;
 
 	auxPointer = *list;
 	*list = node;
@@ -24,8 +24,8 @@ void insertFirstElementInList(ListNode **list, ListNode *node) {
 }
 
 void insertLastElementInList(ListNode **list, ListNode *node) {
-	ListNode *pointer = *list;
-	ListNode *auxPointer;
+	register ListNode *pointer = *list;
+	register ListNode *auxPointer;
 
 	if (pointer == NULL || !LIST_DATA_ELEMENT_SORT_COND(pointer, node)) {
 		auxPointer = *list;
@@ -44,8 +44,8 @@ void insertLastElementInList(ListNode **list, ListNode *node) {
 }
 
 void insertNodeInSortedList(ListNode **list, ListNode *node) {
-	ListNode *pointer = *list;
-	ListNode *auxPointer;
+	register ListNode *pointer = *list;
+	register ListNode *auxPointer;
 
 	if (pointer == NULL || !LIST_DATA_ELEMENT_SORT_COND(pointer, node)) {
 		auxPointer = *list;
@@ -73,9 +73,9 @@ LIST_DATA_ELEMENT_TYPE getListNodeElement(ListNode* ln)
 {
 	return ln->LIST_DATA_ELEMENT_NAME;
 }
-
+//ListNode *pointer;
 ListNode* searchList(ListNode *list, LIST_DATA_ELEMENT_TYPE search_key){
-	ListNode *pointer;
+	register ListNode *pointer;
 
 	pointer = list;
 	while(pointer != NULL && LIST_DATA_ELEMENT_CMP(pointer, search_key)) {
@@ -83,3 +83,11 @@ ListNode* searchList(ListNode *list, LIST_DATA_ELEMENT_TYPE search_key){
 	}
 	return pointer;
 }
+
+// void printList(ListNode *list) {
+// 	while(list != NULL){
+// 		LIST_DATA_ELEMENT_PRINT(list);
+// 		list = list->next;
+// 	}
+// 	printf("\n\n");
+// }

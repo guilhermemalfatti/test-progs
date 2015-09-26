@@ -5,9 +5,9 @@
 
 Graph* newGraph()
 {
-	Graph* ret = malloc(sizeof(Graph));
+	register Graph* ret = malloc(sizeof(Graph));
 	ret->root = NULL;
-	
+
 	return ret;
 }
 
@@ -17,7 +17,7 @@ GraphNode* newGraphNode(Graph *g, GRAPH_DATA_ELEMENT_TYPE value) {
 	GRAPH_DATA_ELEMENT_INIT(new_node);
 #endif
 	GRAPH_DATA_ELEMENT_SET(new_node, value)
-	
+
 	g->count++;
 	return new_node;
 }
@@ -32,23 +32,26 @@ GRAPH_DATA_ELEMENT_TYPE getGraphNodeElement(GraphNode* gn)
 {
 	return gn->GRAPH_DATA_ELEMENT_NAME;
 }
-
+//	GraphNode *child_node;
+//	ListNode *neighbours;
+//	QueueNode *qn;
+//	Queue *q;
 void BFSGraph(Graph *graph, void (*process_fn)(struct process_fn_struct), struct process_fn_struct params)
 {
-	Queue *q = newQueue();
-	
-	QueueNode *qn;
-	GraphNode *parent_node = graph->root;
-	GraphNode *child_node;
-	ListNode *neighbours;
-	
+	register Queue *q = newQueue();
+
+	register QueueNode *qn;
+	register GraphNode *parent_node = graph->root;
+	register GraphNode *child_node;
+	register ListNode *neighbours;
+
 	unsigned short *visited = calloc(graph->count, sizeof(unsigned short));
 	params.node2 = parent_node;
 	process_fn(params);
-	
+
 	visited[parent_node->data] = 1;
 	enQueue(q, newQueueNode(parent_node));
-	
+
 	while(getQueueHead(q)) {
 		qn = deQueue(q);
 		child_node = getQueueNodeElement(qn);
@@ -64,25 +67,27 @@ void BFSGraph(Graph *graph, void (*process_fn)(struct process_fn_struct), struct
 			neighbours = neighbours->next;
 		}
 	}
-	
+
 	free(visited);
 }
-
+//GraphNode *child_node;
+//ListNode *neighbours;
+//Queue *q ;
 void printGraph(Graph *graph)
 {
-	Queue *q = newQueue();
-	
-	QueueNode *qn;
-	GraphNode *parent_node = graph->root;
-	GraphNode *child_node;
-	ListNode *neighbours;
-	
+	register Queue *q = newQueue();
+
+	register QueueNode *qn;
+	register GraphNode *parent_node = graph->root;
+	register GraphNode *child_node;
+	register ListNode *neighbours;
+
 	unsigned short *visited = calloc(graph->count, sizeof(unsigned short));
-	
+
 	visited[parent_node->data] = 1;
 	enQueue(q, newQueueNode(parent_node));
 	printf("Visited node [%d].\n", parent_node->data);
-	
+
 	while(getQueueHead(q)) {
 		qn = deQueue(q);
 		child_node = getQueueNodeElement(qn);
@@ -97,6 +102,6 @@ void printGraph(Graph *graph)
 			neighbours = neighbours->next;
 		}
 	}
-	
+
 	free(visited);
 }
