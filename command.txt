@@ -1,0 +1,3 @@
+arm-linux-gnueabi-gcc -o2 -static -o tests/test-progs/Aplicações/IMDCT/imdct.arm tests/test-progs/Aplicações/IMDCT/imdct.c -lm
+
+./build/ARM/gem5.debug configs/example/se.py  --cpu-type=detailed --caches --l1i_size=32kB --l1d_size=64kB --l2_size=10Mb --cmd "tests/test-progs/Aplicações/IMDCT/imdct.arm" -o "tests/test-progs/Aplicações/IMDCT/input.txt 10"

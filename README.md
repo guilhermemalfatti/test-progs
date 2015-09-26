@@ -9,9 +9,6 @@ I need implement techniques to reduce power in three applications
 
 
 I only obtained normal algoritm and applied low power techniques.
-thanks for these guys, I used her codes to apply low power techniques
-https://github.com/fspacheco/linkedlists
-https://github.com/lucioseki/TDC2
 
 For analysis the data, I used gem5 - SE
 http://www.gem5.org/
