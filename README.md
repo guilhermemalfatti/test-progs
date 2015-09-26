@@ -1,5 +1,5 @@
 # test-progs
-Work related with low power software techniques with gem5 in C language
+Work related with low power software techniques with gem5 in C language.
 
 
 I need implement techniques to reduce power in three applications
